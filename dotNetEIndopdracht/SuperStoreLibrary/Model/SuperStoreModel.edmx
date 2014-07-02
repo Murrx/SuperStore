@@ -4,21 +4,21 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Model1.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-  <EntityContainer Name="Model1StoreContainer">
-    <EntitySet Name="Products" EntityType="Model1.Store.Products" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Stock" EntityType="Model1.Store.Stock" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Purchases" EntityType="Model1.Store.Purchases" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Customers" EntityType="Model1.Store.Customers" store:Type="Tables" Schema="dbo" />
-    <AssociationSet Name="PurchaseProduct" Association="Model1.Store.PurchaseProduct">
+    <Schema Namespace="SuperStoreModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="SuperStoreModelStoreContainer">
+    <EntitySet Name="Products" EntityType="SuperStoreModel.Store.Products" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Stock" EntityType="SuperStoreModel.Store.Stock" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Purchases" EntityType="SuperStoreModel.Store.Purchases" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Customers" EntityType="SuperStoreModel.Store.Customers" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="PurchaseProduct" Association="SuperStoreModel.Store.PurchaseProduct">
       <End Role="Purchase" EntitySet="Purchases" />
       <End Role="Product" EntitySet="Products" />
     </AssociationSet>
-    <AssociationSet Name="ProductStock" Association="Model1.Store.ProductStock">
+    <AssociationSet Name="ProductStock" Association="SuperStoreModel.Store.ProductStock">
       <End Role="Product" EntitySet="Products" />
       <End Role="Stock" EntitySet="Stock" />
     </AssociationSet>
-    <AssociationSet Name="CustomerPurchase" Association="Model1.Store.CustomerPurchase">
+    <AssociationSet Name="CustomerPurchase" Association="SuperStoreModel.Store.CustomerPurchase">
       <End Role="Customer" EntitySet="Customers" />
       <End Role="Purchase" EntitySet="Purchases" />
     </AssociationSet>
@@ -58,8 +58,8 @@
     <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <Association Name="PurchaseProduct">
-    <End Role="Purchase" Type="Model1.Store.Purchases" Multiplicity="*" />
-    <End Role="Product" Type="Model1.Store.Products" Multiplicity="1" />
+    <End Role="Purchase" Type="SuperStoreModel.Store.Purchases" Multiplicity="*" />
+    <End Role="Product" Type="SuperStoreModel.Store.Products" Multiplicity="1" />
     <ReferentialConstraint>
       <Principal Role="Product">
         <PropertyRef Name="Id" />
@@ -70,8 +70,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="ProductStock">
-    <End Role="Product" Type="Model1.Store.Products" Multiplicity="1" />
-    <End Role="Stock" Type="Model1.Store.Stock" Multiplicity="0..1" />
+    <End Role="Product" Type="SuperStoreModel.Store.Products" Multiplicity="1" />
+    <End Role="Stock" Type="SuperStoreModel.Store.Stock" Multiplicity="0..1" />
     <ReferentialConstraint>
       <Principal Role="Product">
         <PropertyRef Name="Id" />
@@ -82,8 +82,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="CustomerPurchase">
-    <End Role="Customer" Type="Model1.Store.Customers" Multiplicity="1" />
-    <End Role="Purchase" Type="Model1.Store.Purchases" Multiplicity="*" />
+    <End Role="Customer" Type="SuperStoreModel.Store.Customers" Multiplicity="1" />
+    <End Role="Purchase" Type="SuperStoreModel.Store.Purchases" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Customer">
         <PropertyRef Name="Id" />
@@ -96,21 +96,21 @@
 </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Model1" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
-        <EntityContainer Name="Model1Container" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Products" EntityType="Model1.Product" />
-          <EntitySet Name="Stock" EntityType="Model1.Stock" />
-          <EntitySet Name="Purchases" EntityType="Model1.Purchase" />
-          <AssociationSet Name="PurchaseProduct" Association="Model1.PurchaseProduct">
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="SuperStoreModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="SuperStoreModelContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Products" EntityType="SuperStoreModel.Product" />
+          <EntitySet Name="Stock" EntityType="SuperStoreModel.Stock" />
+          <EntitySet Name="Purchases" EntityType="SuperStoreModel.Purchase" />
+          <AssociationSet Name="PurchaseProduct" Association="SuperStoreModel.PurchaseProduct">
             <End Role="Purchase" EntitySet="Purchases" />
             <End Role="Product" EntitySet="Products" />
           </AssociationSet>
-          <AssociationSet Name="ProductStock" Association="Model1.ProductStock">
+          <AssociationSet Name="ProductStock" Association="SuperStoreModel.ProductStock">
             <End Role="Product" EntitySet="Products" />
             <End Role="Stock" EntitySet="Stock" />
           </AssociationSet>
-          <EntitySet Name="Customers" EntityType="Model1.Customer" />
-          <AssociationSet Name="CustomerPurchase" Association="Model1.CustomerPurchase">
+          <EntitySet Name="Customers" EntityType="SuperStoreModel.Customer" />
+          <AssociationSet Name="CustomerPurchase" Association="SuperStoreModel.CustomerPurchase">
             <End Role="Customer" EntitySet="Customers" />
             <End Role="Purchase" EntitySet="Purchases" />
           </AssociationSet>
@@ -122,7 +122,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" Nullable="false" />
           <Property Name="Price" Type="Double" Nullable="false" />
-          <NavigationProperty Name="Stock" Relationship="Model1.ProductStock" FromRole="Product" ToRole="Stock" />
+          <NavigationProperty Name="Stock" Relationship="SuperStoreModel.ProductStock" FromRole="Product" ToRole="Stock" />
         </EntityType>
         <EntityType Name="Stock">
           <Key>
@@ -138,16 +138,16 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Amount" Type="Int32" Nullable="false" />
           <Property Name="Date" Type="DateTime" Nullable="false" />
-          <NavigationProperty Name="Product" Relationship="Model1.PurchaseProduct" FromRole="Purchase" ToRole="Product" />
-          <NavigationProperty Name="Customer" Relationship="Model1.CustomerPurchase" FromRole="Purchase" ToRole="Customer" />
+          <NavigationProperty Name="Product" Relationship="SuperStoreModel.PurchaseProduct" FromRole="Purchase" ToRole="Product" />
+          <NavigationProperty Name="Customer" Relationship="SuperStoreModel.CustomerPurchase" FromRole="Purchase" ToRole="Customer" />
         </EntityType>
         <Association Name="PurchaseProduct">
-          <End Type="Model1.Purchase" Role="Purchase" Multiplicity="*" />
-          <End Type="Model1.Product" Role="Product" Multiplicity="1" />
+          <End Type="SuperStoreModel.Purchase" Role="Purchase" Multiplicity="*" />
+          <End Type="SuperStoreModel.Product" Role="Product" Multiplicity="1" />
         </Association>
         <Association Name="ProductStock">
-          <End Type="Model1.Product" Role="Product" Multiplicity="1" />
-          <End Type="Model1.Stock" Role="Stock" Multiplicity="1" />
+          <End Type="SuperStoreModel.Product" Role="Product" Multiplicity="1" />
+          <End Type="SuperStoreModel.Stock" Role="Stock" Multiplicity="1" />
           <ReferentialConstraint>
             <Principal Role="Product">
               <PropertyRef Name="Id" />
@@ -165,20 +165,20 @@
           <Property Name="Name" Type="String" Nullable="false" />
           <Property Name="Username" Type="String" Nullable="false" />
           <Property Name="Password" Type="String" Nullable="false" />
-          <NavigationProperty Name="Purchases" Relationship="Model1.CustomerPurchase" FromRole="Customer" ToRole="Purchase" />
+          <NavigationProperty Name="Purchases" Relationship="SuperStoreModel.CustomerPurchase" FromRole="Customer" ToRole="Purchase" />
         </EntityType>
         <Association Name="CustomerPurchase">
-          <End Type="Model1.Customer" Role="Customer" Multiplicity="1" />
-          <End Type="Model1.Purchase" Role="Purchase" Multiplicity="*" />
+          <End Type="SuperStoreModel.Customer" Role="Customer" Multiplicity="1" />
+          <End Type="SuperStoreModel.Purchase" Role="Purchase" Multiplicity="*" />
         </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
     <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="Model1StoreContainer" CdmEntityContainer="Model1Container">
+  <EntityContainerMapping StorageEntityContainer="SuperStoreModelStoreContainer" CdmEntityContainer="SuperStoreModelContainer">
     <EntitySetMapping Name="Products">
-      <EntityTypeMapping TypeName="IsTypeOf(Model1.Product)">
+      <EntityTypeMapping TypeName="IsTypeOf(SuperStoreModel.Product)">
         <MappingFragment StoreEntitySet="Products">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Name" ColumnName="Name" />
@@ -187,7 +187,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Stock">
-      <EntityTypeMapping TypeName="IsTypeOf(Model1.Stock)">
+      <EntityTypeMapping TypeName="IsTypeOf(SuperStoreModel.Stock)">
         <MappingFragment StoreEntitySet="Stock">
           <ScalarProperty Name="ProductId" ColumnName="ProductId" />
           <ScalarProperty Name="Amount" ColumnName="Amount" />
@@ -195,7 +195,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Purchases">
-      <EntityTypeMapping TypeName="IsTypeOf(Model1.Purchase)">
+      <EntityTypeMapping TypeName="IsTypeOf(SuperStoreModel.Purchase)">
         <MappingFragment StoreEntitySet="Purchases">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Amount" ColumnName="Amount" />
@@ -204,7 +204,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Customers">
-      <EntityTypeMapping TypeName="IsTypeOf(Model1.Customer)">
+      <EntityTypeMapping TypeName="IsTypeOf(SuperStoreModel.Customer)">
         <MappingFragment StoreEntitySet="Customers">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Name" ColumnName="Name" />
@@ -213,7 +213,7 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <AssociationSetMapping Name="PurchaseProduct" TypeName="Model1.PurchaseProduct" StoreEntitySet="Purchases">
+    <AssociationSetMapping Name="PurchaseProduct" TypeName="SuperStoreModel.PurchaseProduct" StoreEntitySet="Purchases">
       <EndProperty Name="Product">
         <ScalarProperty Name="Id" ColumnName="Product_Id" />
       </EndProperty>
@@ -221,7 +221,7 @@
         <ScalarProperty Name="Id" ColumnName="Id" />
       </EndProperty>
     </AssociationSetMapping>
-    <AssociationSetMapping Name="CustomerPurchase" TypeName="Model1.CustomerPurchase" StoreEntitySet="Purchases">
+    <AssociationSetMapping Name="CustomerPurchase" TypeName="SuperStoreModel.CustomerPurchase" StoreEntitySet="Purchases">
       <EndProperty Name="Customer">
         <ScalarProperty Name="Id" ColumnName="Customer_Id" />
       </EndProperty>

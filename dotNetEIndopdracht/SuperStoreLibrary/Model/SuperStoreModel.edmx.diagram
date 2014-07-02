@@ -4,14 +4,14 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="ac3d2cbdbd484ef7b2296cd772cb50d9" Name="Diagram1" >
-        <EntityTypeShape EntityType="Model1.Product" Width="1.5" PointX="6.5" PointY="1.5" />
-        <EntityTypeShape EntityType="Model1.Stock" Width="1.5" PointX="8.75" PointY="1.5" />
-        <EntityTypeShape EntityType="Model1.Purchase" Width="1.5" PointX="4" PointY="1.5" />
-        <AssociationConnector Association="Model1.PurchaseProduct" />
-        <AssociationConnector Association="Model1.ProductStock" />
-        <EntityTypeShape EntityType="Model1.Customer" Width="1.5" PointX="1.125" PointY="1.5" />
-        <AssociationConnector Association="Model1.CustomerPurchase" />
+      <Diagram DiagramId="ac3d2cbdbd484ef7b2296cd772cb50d9" Name="Model" >
+        <EntityTypeShape EntityType="SuperStoreModel.Product" Width="1.5" PointX="6.5" PointY="1.5" />
+        <EntityTypeShape EntityType="SuperStoreModel.Stock" Width="1.5" PointX="8.75" PointY="1.5" />
+        <EntityTypeShape EntityType="SuperStoreModel.Purchase" Width="1.5" PointX="4" PointY="1.5" />
+        <AssociationConnector Association="SuperStoreModel.PurchaseProduct" />
+        <AssociationConnector Association="SuperStoreModel.ProductStock" />
+        <EntityTypeShape EntityType="SuperStoreModel.Customer" Width="1.5" PointX="1.125" PointY="1.5" />
+        <AssociationConnector Association="SuperStoreModel.CustomerPurchase" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

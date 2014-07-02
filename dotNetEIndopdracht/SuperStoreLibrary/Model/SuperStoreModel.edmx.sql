@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 07/02/2014 14:57:31
--- Generated from EDMX file: C:\Users\Robin Altena\documents\visual studio 2013\Projects\dotNetEIndopdracht\SuperStoreLibrary\Model\SuperStoreModel.edmx
+-- Date Created: 07/02/2014 15:44:51
+-- Generated from EDMX file: C:\Users\Robin Altena\Source\Repos\SuperStore\dotNetEIndopdracht\SuperStoreLibrary\Model\SuperStoreModel.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -17,11 +17,32 @@ GO
 -- Dropping existing FOREIGN KEY constraints
 -- --------------------------------------------------
 
+IF OBJECT_ID(N'[dbo].[FK_PurchaseProduct]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Purchases] DROP CONSTRAINT [FK_PurchaseProduct];
+GO
+IF OBJECT_ID(N'[dbo].[FK_ProductStock]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Stock] DROP CONSTRAINT [FK_ProductStock];
+GO
+IF OBJECT_ID(N'[dbo].[FK_CustomerPurchase]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Purchases] DROP CONSTRAINT [FK_CustomerPurchase];
+GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
 -- --------------------------------------------------
 
+IF OBJECT_ID(N'[dbo].[Products]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Products];
+GO
+IF OBJECT_ID(N'[dbo].[Stock]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Stock];
+GO
+IF OBJECT_ID(N'[dbo].[Purchases]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Purchases];
+GO
+IF OBJECT_ID(N'[dbo].[Customers]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Customers];
+GO
 
 -- --------------------------------------------------
 -- Creating all tables
