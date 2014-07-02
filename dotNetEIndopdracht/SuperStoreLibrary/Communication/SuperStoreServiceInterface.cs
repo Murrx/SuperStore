@@ -12,7 +12,7 @@ namespace SuperStoreLibrary.Communication
     {
         [OperationContract]
         [FaultContract(typeof(FaultException))]
-        AuthenticationCredentials RegisterNewUser(CustomerContainer NewUser);
+        AuthenticationCredentials RegisterNewUser(string Name, string Username);
         
         [OperationContract]
         [FaultContract(typeof(FaultException))]

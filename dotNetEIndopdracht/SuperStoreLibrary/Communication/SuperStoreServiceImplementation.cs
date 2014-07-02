@@ -10,39 +10,53 @@ namespace SuperStoreLibrary.Communication
 {
     public class SuperStoreServiceImplementation : SuperStoreServiceInterface
     {
-
-        public AuthenticationCredentials RegisterNewUser(CustomerContainer RegisterCustomer)
+        public AuthenticationCredentials RegisterNewUser(String Name, String Username)
         {
             SuperStoreModelContainer ModelContainer = ModelContainerProvider.GetInstance();
 
             //Check if username is still available
-            Customer ExistingCustomer = ModelContainer.Customers.FirstOrDefault(user => user.Username == RegisterCustomer.credentials.username);
+            Customer ExistingCustomer = ModelContainer.Customers.FirstOrDefault(user => user.Username == Username);
             if (ExistingCustomer == null){
-                Customer NewCustomer = new Customer{Name = RegisterCustomer.name, Username = RegisterCustomer.credentials.username, Password = GeneratePassword(RegisterCustomer.credentials.password)};
-                //add something to generate&encrypt password
+
+                String Password = GeneratePassword(Username);
+
+                Customer NewCustomer = new Customer{Name = Name, Username = Username, Password = HashPassword(Password)};
 
                 ModelContainer.Customers.Add(NewCustomer);
                 ModelContainer.SaveChanges();
 
-                return RegisterCustomer.credentials;
+                return new AuthenticationCredentials { password = Password, username = Username };
             }
-            throw new FaultException("not yet implemented");
+            throw new FaultException("Username is already in use");
         }
 
-        private string GeneratePassword(String Username){
+        public static string GeneratePassword(string Username){
             string Password = "";
-
             foreach(char Char in Username){
                 int C = Char;
-                Password = C++.ToString();
+                C++;
+                Password += (char)C;
             }
 
             return Password;
         }
 
+        private static string HashPassword(string Password)
+        {
+            return string.Format("{0:X}",Password.GetHashCode());
+        }
+
         public CustomerContainer RetrieveUserInfo(AuthenticationCredentials Credentials)
         {
-            throw new FaultException("not yet implemented");
+            SuperStoreModelContainer ModelContainer = ModelContainerProvider.GetInstance();
+
+            Customer RequestedCustomer = ModelContainer.Customers.SingleOrDefault(user => user.Username == Credentials.username && user.Password == Credentials.password);
+
+            if (RequestedCustomer == null)
+            {
+                throw new FaultException("not yet implemented");
+            }
+            return RequestedCustomer;
         }
 
         public List<ProductContainer> RetrieveAvailableProducts(int PageIndex, int PageSize)
