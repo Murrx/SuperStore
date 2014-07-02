@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using SuperStoreLibrary.Model;
 
 namespace SuperStoreLibrary.Communication
 {
@@ -38,6 +39,13 @@ namespace SuperStoreLibrary.Communication
         public string name { get; set; }
         [DataMember]
         public AuthenticationCredentials credentials { get; set; }
+
+        public CustomerContainer() { }
+        public CustomerContainer(Customer Cust)
+        {
+            name = Cust.Name;
+            credentials = new AuthenticationCredentials { password = Cust.Password, username = Cust.Username };
+        }
     }
     [DataContract]
     public class AuthenticationCredentials

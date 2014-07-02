@@ -41,7 +41,7 @@ namespace SuperStoreLibrary.Communication
             return Password;
         }
 
-        private static string HashPassword(string Password)
+        public static string HashPassword(string Password)
         {
             return string.Format("{0:X}",Password.GetHashCode());
         }
@@ -50,13 +50,14 @@ namespace SuperStoreLibrary.Communication
         {
             SuperStoreModelContainer ModelContainer = ModelContainerProvider.GetInstance();
 
-            Customer RequestedCustomer = ModelContainer.Customers.SingleOrDefault(user => user.Username == Credentials.username && user.Password == Credentials.password);
+            string HashedPassword = HashPassword(Credentials.password);
+            Customer RequestedCustomer = ModelContainer.Customers.SingleOrDefault(user => user.Username == Credentials.username && user.Password == HashedPassword);
 
             if (RequestedCustomer == null)
             {
-                throw new FaultException("not yet implemented");
+                throw new FaultException("Invallid user credentials");
             }
-            return RequestedCustomer;
+            return new CustomerContainer(RequestedCustomer);
         }
 
         public List<ProductContainer> RetrieveAvailableProducts(int PageIndex, int PageSize)
