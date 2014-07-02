@@ -54,6 +54,12 @@ namespace SuperStoreLibrary.Communication
         public string username { get; set; }
         [DataMember]
         public string password { get; set; }
+
+        public void Validate()
+        {
+            if (username == null || username == "") { throw new FaultException("Username cannot be empty"); }
+            if (password == null || password == "") { throw new FaultException("Password cannot be empty"); }
+        }
     }
 
     [DataContract]
@@ -73,5 +79,12 @@ namespace SuperStoreLibrary.Communication
         public string name { get; set; }
         [DataMember]
         public double price { get; set; }
+
+        public ProductContainer() { }
+        public ProductContainer(Product prod)
+        {
+            name = prod.Name;
+            price = prod.Price;
+        }
     }
 }
