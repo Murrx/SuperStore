@@ -25,47 +25,47 @@
   </EntityContainer>
   <EntityType Name="Products">
     <Key>
-      <PropertyRef Name="Id" />
+      <PropertyRef Name="id" />
     </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Price" Type="float" Nullable="false" />
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="price" Type="float" Nullable="false" />
   </EntityType>
   <EntityType Name="Stock">
     <Key>
-      <PropertyRef Name="ProductId" />
+      <PropertyRef Name="productId" />
     </Key>
-    <Property Name="ProductId" Type="int" Nullable="false" />
-    <Property Name="Amount" Type="int" Nullable="false" />
+    <Property Name="productId" Type="int" Nullable="false" />
+    <Property Name="amount" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Purchases">
     <Key>
-      <PropertyRef Name="Id" />
+      <PropertyRef Name="id" />
     </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Amount" Type="int" Nullable="false" />
-    <Property Name="Date" Type="datetime" Nullable="false" />
-    <Property Name="Product_Id" Type="int" Nullable="false" />
-    <Property Name="Customer_Id" Type="int" Nullable="false" />
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="amount" Type="int" Nullable="false" />
+    <Property Name="date" Type="datetime" Nullable="false" />
+    <Property Name="product_id" Type="int" Nullable="false" />
+    <Property Name="customer_id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Customers">
     <Key>
-      <PropertyRef Name="Id" />
+      <PropertyRef Name="id" />
     </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Username" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="username" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="password" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <Association Name="PurchaseProduct">
     <End Role="Purchase" Type="SuperStoreModel.Store.Purchases" Multiplicity="*" />
     <End Role="Product" Type="SuperStoreModel.Store.Products" Multiplicity="1" />
     <ReferentialConstraint>
       <Principal Role="Product">
-        <PropertyRef Name="Id" />
+        <PropertyRef Name="id" />
       </Principal>
       <Dependent Role="Purchase">
-        <PropertyRef Name="Product_Id" />
+        <PropertyRef Name="product_id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -74,10 +74,10 @@
     <End Role="Stock" Type="SuperStoreModel.Store.Stock" Multiplicity="0..1" />
     <ReferentialConstraint>
       <Principal Role="Product">
-        <PropertyRef Name="Id" />
+        <PropertyRef Name="id" />
       </Principal>
       <Dependent Role="Stock">
-        <PropertyRef Name="ProductId" />
+        <PropertyRef Name="productId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -86,10 +86,10 @@
     <End Role="Purchase" Type="SuperStoreModel.Store.Purchases" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Customer">
-        <PropertyRef Name="Id" />
+        <PropertyRef Name="id" />
       </Principal>
       <Dependent Role="Purchase">
-        <PropertyRef Name="Customer_Id" />
+        <PropertyRef Name="customer_id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -117,29 +117,29 @@
         </EntityContainer>
         <EntityType Name="Product">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" Nullable="false" />
-          <Property Name="Price" Type="Double" Nullable="false" />
-          <NavigationProperty Name="Stock" Relationship="SuperStoreModel.ProductStock" FromRole="Product" ToRole="Stock" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" />
+          <Property Name="price" Type="Double" Nullable="false" />
+          <NavigationProperty Name="stock" Relationship="SuperStoreModel.ProductStock" FromRole="Product" ToRole="Stock" />
         </EntityType>
         <EntityType Name="Stock">
           <Key>
-            <PropertyRef Name="ProductId" />
+            <PropertyRef Name="productId" />
           </Key>
-          <Property Name="ProductId" Type="Int32" Nullable="false" />
-          <Property Name="Amount" Type="Int32" Nullable="false" />
+          <Property Name="productId" Type="Int32" Nullable="false" />
+          <Property Name="amount" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="Purchase">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Amount" Type="Int32" Nullable="false" />
-          <Property Name="Date" Type="DateTime" Nullable="false" />
-          <NavigationProperty Name="Product" Relationship="SuperStoreModel.PurchaseProduct" FromRole="Purchase" ToRole="Product" />
-          <NavigationProperty Name="Customer" Relationship="SuperStoreModel.CustomerPurchase" FromRole="Purchase" ToRole="Customer" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="amount" Type="Int32" Nullable="false" />
+          <Property Name="date" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="product" Relationship="SuperStoreModel.PurchaseProduct" FromRole="Purchase" ToRole="Product" />
+          <NavigationProperty Name="customer" Relationship="SuperStoreModel.CustomerPurchase" FromRole="Purchase" ToRole="Customer" />
         </EntityType>
         <Association Name="PurchaseProduct">
           <End Type="SuperStoreModel.Purchase" Role="Purchase" Multiplicity="*" />
@@ -150,22 +150,22 @@
           <End Type="SuperStoreModel.Stock" Role="Stock" Multiplicity="1" />
           <ReferentialConstraint>
             <Principal Role="Product">
-              <PropertyRef Name="Id" />
+              <PropertyRef Name="id" />
             </Principal>
             <Dependent Role="Stock">
-              <PropertyRef Name="ProductId" />
+              <PropertyRef Name="productId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <EntityType Name="Customer">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="id" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" Nullable="false" />
-          <Property Name="Username" Type="String" Nullable="false" />
-          <Property Name="Password" Type="String" Nullable="false" />
-          <NavigationProperty Name="Purchases" Relationship="SuperStoreModel.CustomerPurchase" FromRole="Customer" ToRole="Purchase" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" />
+          <Property Name="username" Type="String" Nullable="false" />
+          <Property Name="password" Type="String" Nullable="false" />
+          <NavigationProperty Name="purchases" Relationship="SuperStoreModel.CustomerPurchase" FromRole="Customer" ToRole="Purchase" />
         </EntityType>
         <Association Name="CustomerPurchase">
           <End Type="SuperStoreModel.Customer" Role="Customer" Multiplicity="1" />
@@ -180,53 +180,53 @@
     <EntitySetMapping Name="Products">
       <EntityTypeMapping TypeName="IsTypeOf(SuperStoreModel.Product)">
         <MappingFragment StoreEntitySet="Products">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="price" ColumnName="price" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Stock">
       <EntityTypeMapping TypeName="IsTypeOf(SuperStoreModel.Stock)">
         <MappingFragment StoreEntitySet="Stock">
-          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
-          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="productId" ColumnName="productId" />
+          <ScalarProperty Name="amount" ColumnName="amount" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Purchases">
       <EntityTypeMapping TypeName="IsTypeOf(SuperStoreModel.Purchase)">
         <MappingFragment StoreEntitySet="Purchases">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Amount" ColumnName="Amount" />
-          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="amount" ColumnName="amount" />
+          <ScalarProperty Name="date" ColumnName="date" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Customers">
       <EntityTypeMapping TypeName="IsTypeOf(SuperStoreModel.Customer)">
         <MappingFragment StoreEntitySet="Customers">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="Username" ColumnName="Username" />
-          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="password" ColumnName="password" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <AssociationSetMapping Name="PurchaseProduct" TypeName="SuperStoreModel.PurchaseProduct" StoreEntitySet="Purchases">
       <EndProperty Name="Product">
-        <ScalarProperty Name="Id" ColumnName="Product_Id" />
+        <ScalarProperty Name="id" ColumnName="product_id" />
       </EndProperty>
       <EndProperty Name="Purchase">
-        <ScalarProperty Name="Id" ColumnName="Id" />
+        <ScalarProperty Name="id" ColumnName="id" />
       </EndProperty>
     </AssociationSetMapping>
     <AssociationSetMapping Name="CustomerPurchase" TypeName="SuperStoreModel.CustomerPurchase" StoreEntitySet="Purchases">
       <EndProperty Name="Customer">
-        <ScalarProperty Name="Id" ColumnName="Customer_Id" />
+        <ScalarProperty Name="id" ColumnName="customer_id" />
       </EndProperty>
       <EndProperty Name="Purchase">
-        <ScalarProperty Name="Id" ColumnName="Id" />
+        <ScalarProperty Name="id" ColumnName="id" />
       </EndProperty>
     </AssociationSetMapping>
   </EntityContainerMapping>

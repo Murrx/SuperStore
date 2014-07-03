@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 07/02/2014 15:44:51
+-- Date Created: 07/03/2014 14:14:38
 -- Generated from EDMX file: C:\Users\Robin Altena\Source\Repos\SuperStore\dotNetEIndopdracht\SuperStoreLibrary\Model\SuperStoreModel.edmx
 -- --------------------------------------------------
 
@@ -50,35 +50,35 @@ GO
 
 -- Creating table 'Products'
 CREATE TABLE [dbo].[Products] (
-    [Id] int IDENTITY(1,1) NOT NULL,
-    [Name] nvarchar(max)  NOT NULL,
-    [Price] float  NOT NULL
+    [id] int IDENTITY(1,1) NOT NULL,
+    [name] nvarchar(max)  NOT NULL,
+    [price] float  NOT NULL
 );
 GO
 
 -- Creating table 'Stock'
 CREATE TABLE [dbo].[Stock] (
-    [ProductId] int  NOT NULL,
-    [Amount] int  NOT NULL
+    [productId] int  NOT NULL,
+    [amount] int  NOT NULL
 );
 GO
 
 -- Creating table 'Purchases'
 CREATE TABLE [dbo].[Purchases] (
-    [Id] int IDENTITY(1,1) NOT NULL,
-    [Amount] int  NOT NULL,
-    [Date] datetime  NOT NULL,
-    [Product_Id] int  NOT NULL,
-    [Customer_Id] int  NOT NULL
+    [id] int IDENTITY(1,1) NOT NULL,
+    [amount] int  NOT NULL,
+    [date] datetime  NOT NULL,
+    [product_id] int  NOT NULL,
+    [customer_id] int  NOT NULL
 );
 GO
 
 -- Creating table 'Customers'
 CREATE TABLE [dbo].[Customers] (
-    [Id] int IDENTITY(1,1) NOT NULL,
-    [Name] nvarchar(max)  NOT NULL,
-    [Username] nvarchar(max)  NOT NULL,
-    [Password] nvarchar(max)  NOT NULL
+    [id] int IDENTITY(1,1) NOT NULL,
+    [name] nvarchar(max)  NOT NULL,
+    [username] nvarchar(max)  NOT NULL,
+    [password] nvarchar(max)  NOT NULL
 );
 GO
 
@@ -86,71 +86,71 @@ GO
 -- Creating all PRIMARY KEY constraints
 -- --------------------------------------------------
 
--- Creating primary key on [Id] in table 'Products'
+-- Creating primary key on [id] in table 'Products'
 ALTER TABLE [dbo].[Products]
 ADD CONSTRAINT [PK_Products]
-    PRIMARY KEY CLUSTERED ([Id] ASC);
+    PRIMARY KEY CLUSTERED ([id] ASC);
 GO
 
--- Creating primary key on [ProductId] in table 'Stock'
+-- Creating primary key on [productId] in table 'Stock'
 ALTER TABLE [dbo].[Stock]
 ADD CONSTRAINT [PK_Stock]
-    PRIMARY KEY CLUSTERED ([ProductId] ASC);
+    PRIMARY KEY CLUSTERED ([productId] ASC);
 GO
 
--- Creating primary key on [Id] in table 'Purchases'
+-- Creating primary key on [id] in table 'Purchases'
 ALTER TABLE [dbo].[Purchases]
 ADD CONSTRAINT [PK_Purchases]
-    PRIMARY KEY CLUSTERED ([Id] ASC);
+    PRIMARY KEY CLUSTERED ([id] ASC);
 GO
 
--- Creating primary key on [Id] in table 'Customers'
+-- Creating primary key on [id] in table 'Customers'
 ALTER TABLE [dbo].[Customers]
 ADD CONSTRAINT [PK_Customers]
-    PRIMARY KEY CLUSTERED ([Id] ASC);
+    PRIMARY KEY CLUSTERED ([id] ASC);
 GO
 
 -- --------------------------------------------------
 -- Creating all FOREIGN KEY constraints
 -- --------------------------------------------------
 
--- Creating foreign key on [Product_Id] in table 'Purchases'
+-- Creating foreign key on [product_id] in table 'Purchases'
 ALTER TABLE [dbo].[Purchases]
 ADD CONSTRAINT [FK_PurchaseProduct]
-    FOREIGN KEY ([Product_Id])
+    FOREIGN KEY ([product_id])
     REFERENCES [dbo].[Products]
-        ([Id])
+        ([id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_PurchaseProduct'
 CREATE INDEX [IX_FK_PurchaseProduct]
 ON [dbo].[Purchases]
-    ([Product_Id]);
+    ([product_id]);
 GO
 
--- Creating foreign key on [ProductId] in table 'Stock'
+-- Creating foreign key on [productId] in table 'Stock'
 ALTER TABLE [dbo].[Stock]
 ADD CONSTRAINT [FK_ProductStock]
-    FOREIGN KEY ([ProductId])
+    FOREIGN KEY ([productId])
     REFERENCES [dbo].[Products]
-        ([Id])
+        ([id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO
 
--- Creating foreign key on [Customer_Id] in table 'Purchases'
+-- Creating foreign key on [customer_id] in table 'Purchases'
 ALTER TABLE [dbo].[Purchases]
 ADD CONSTRAINT [FK_CustomerPurchase]
-    FOREIGN KEY ([Customer_Id])
+    FOREIGN KEY ([customer_id])
     REFERENCES [dbo].[Customers]
-        ([Id])
+        ([id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_CustomerPurchase'
 CREATE INDEX [IX_FK_CustomerPurchase]
 ON [dbo].[Purchases]
-    ([Customer_Id]);
+    ([customer_id]);
 GO
 
 -- --------------------------------------------------

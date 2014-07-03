@@ -14,11 +14,11 @@ namespace SuperStoreLibrary.Model
     
     public partial class Purchase
     {
-        public int Id { get; set; }
-        public int Amount { get; set; }
-        public System.DateTime Date { get; set; }
+        public int id { get; set; }
+        public int amount { get; set; }
+        public System.DateTime date { get; set; }
     
-        public virtual Product Product { get; set; }
-        public virtual Customer Customer { get; set; }
+        public virtual Product product { get; set; }
+        public virtual Customer customer { get; set; }
     }
 }

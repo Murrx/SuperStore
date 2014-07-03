@@ -14,7 +14,7 @@ namespace SuperStoreLibrary.Model
     
     public partial class Stock
     {
-        public int ProductId { get; set; }
-        public int Amount { get; set; }
+        public int productId { get; set; }
+        public int amount { get; set; }
     }
 }

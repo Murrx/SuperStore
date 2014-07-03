@@ -16,14 +16,14 @@ namespace SuperStoreLibrary.Model
     {
         public Customer()
         {
-            this.Purchases = new HashSet<Purchase>();
+            this.purchases = new HashSet<Purchase>();
         }
     
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public string Username { get; set; }
-        public string Password { get; set; }
+        public int id { get; set; }
+        public string name { get; set; }
+        public string username { get; set; }
+        public string password { get; set; }
     
-        public virtual ICollection<Purchase> Purchases { get; set; }
+        public virtual ICollection<Purchase> purchases { get; set; }
     }
 }
