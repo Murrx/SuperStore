@@ -10,7 +10,12 @@
             <Menu DockPanel.Dock="Top">
                 <MenuItem Header="_File">
                     <MenuItem Header="_Authenticate" Click="Authenticate_Click"/>
+                    <MenuItem Header="_Register" Click="RegisterMenuItem_Click" />
                     <MenuItem Header="_Close" Click="Close_Click"/>
+                </MenuItem>
+
+                <MenuItem Header="_View">
+                    <MenuItem Header="_Refresh" Click="RefreshMenuItem_Click" />
                 </MenuItem>
             </Menu>
             <ListView DockPanel.Dock="Top" Margin="10,10,10,10" Name="availableProducts" MouseLeftButtonUp="availableProducts_Selected" Height="210">

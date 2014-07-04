@@ -118,5 +118,15 @@ namespace WpfApplication2
             }
             
         }
+
+        private void RefreshMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            Refresh();
+        }
+
+        private void RegisterMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            new RegisterWindow().Show();
+        }
     }
 }
