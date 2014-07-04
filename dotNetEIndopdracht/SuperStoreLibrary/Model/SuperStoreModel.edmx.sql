@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 07/03/2014 14:14:38
+-- Date Created: 07/04/2014 13:35:29
 -- Generated from EDMX file: C:\Users\Robin Altena\Source\Repos\SuperStore\dotNetEIndopdracht\SuperStoreLibrary\Model\SuperStoreModel.edmx
 -- --------------------------------------------------
 
@@ -78,7 +78,8 @@ CREATE TABLE [dbo].[Customers] (
     [id] int IDENTITY(1,1) NOT NULL,
     [name] nvarchar(max)  NOT NULL,
     [username] nvarchar(max)  NOT NULL,
-    [password] nvarchar(max)  NOT NULL
+    [password] nvarchar(max)  NOT NULL,
+    [saldo] float  NOT NULL
 );
 GO
 

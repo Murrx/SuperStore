@@ -54,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Communication\SuperStoreServiceInterface.cs" />
+    <Compile Include="Model\CustomerPart.cs" />
     <Compile Include="Model\ModelContainerProvider.cs" />
     <Compile Include="Model\Customer.cs">
       <DependentUpon>SuperStoreModel.tt</DependentUpon>
@@ -61,6 +62,7 @@
     <Compile Include="Model\Product.cs">
       <DependentUpon>SuperStoreModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\ProductPart.cs" />
     <Compile Include="Model\Purchase.cs">
       <DependentUpon>SuperStoreModel.tt</DependentUpon>
     </Compile>

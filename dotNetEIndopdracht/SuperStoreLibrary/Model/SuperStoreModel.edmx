@@ -56,6 +56,7 @@
     <Property Name="name" Type="nvarchar(max)" Nullable="false" />
     <Property Name="username" Type="nvarchar(max)" Nullable="false" />
     <Property Name="password" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="saldo" Type="float" Nullable="false" />
   </EntityType>
   <Association Name="PurchaseProduct">
     <End Role="Purchase" Type="SuperStoreModel.Store.Purchases" Multiplicity="*" />
@@ -166,6 +167,7 @@
           <Property Name="username" Type="String" Nullable="false" />
           <Property Name="password" Type="String" Nullable="false" />
           <NavigationProperty Name="purchases" Relationship="SuperStoreModel.CustomerPurchase" FromRole="Customer" ToRole="Purchase" />
+          <Property Name="saldo" Type="Double" Nullable="false" />
         </EntityType>
         <Association Name="CustomerPurchase">
           <End Type="SuperStoreModel.Customer" Role="Customer" Multiplicity="1" />
@@ -210,6 +212,7 @@
           <ScalarProperty Name="name" ColumnName="name" />
           <ScalarProperty Name="username" ColumnName="username" />
           <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="saldo" ColumnName="saldo" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

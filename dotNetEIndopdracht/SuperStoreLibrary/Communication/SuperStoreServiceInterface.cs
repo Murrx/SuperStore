@@ -58,19 +58,10 @@ namespace SuperStoreLibrary.Communication
         [DataMember]
         public string password { get; set; }
 
-        public Customer ValidateAndRetrieve()
+        public void Validate()
         {
             if (username == null || username == "") { throw new FaultException("Username cannot be empty"); }
             if (password == null || password == "") { throw new FaultException("Password cannot be empty"); }
-            //Check if the username/password combination is valid
-            SuperStoreModelContainer modelContainer = ModelContainerProvider.GetInstance();
-            string hashedPassword = SuperStoreServiceImplementation.HashPassword(password);
-            Customer requestedCustomer = modelContainer.Customers.SingleOrDefault(user => user.username == this.username && user.password == hashedPassword);
-            if (requestedCustomer == null)
-            {
-                throw new FaultException("Invalid username password combination");
-            }
-            return requestedCustomer;
         }
     }
 
@@ -78,11 +69,24 @@ namespace SuperStoreLibrary.Communication
     public class PurchaseContainer
     {
         [DataMember]
-        public ProductContainer product { get; set; }
-        [DataMember]
         public int amount { get; set; }
         [DataMember]
         public DateTime date { get; set; }
+        [DataMember]
+        public int productId { get; set; }
+
+        public PurchaseContainer() { }
+        public PurchaseContainer(Purchase purchase) {
+            amount = purchase.amount;
+            date = purchase.date;
+            productId = purchase.product.id;
+        }
+        public void Validate()
+        {
+            if (productId < 1) { throw new FaultException("ProductId must be larger than 0"); }
+            if (amount < 1) { throw new FaultException("Amount must be larger than 0"); }
+            if (date < DateTime.Now.AddHours(-1)) { throw new FaultException("Date cannot be in the past"); }
+        }
     }
     [DataContract]
     public class ProductContainer
@@ -91,6 +95,7 @@ namespace SuperStoreLibrary.Communication
         public string name { get; set; }
         [DataMember]
         public double price { get; set; }
+       
 
         public ProductContainer() { }
         public ProductContainer(Product product)
@@ -125,13 +130,6 @@ namespace SuperStoreLibrary.Communication
         {
             if (name == null || name == "") { throw new FaultException("Name cannot be empty"); }
             if (username == null || username == "") { throw new FaultException("Username cannot be empty"); }
-            //check availability of username
-            SuperStoreModelContainer modelContainer = ModelContainerProvider.GetInstance();
-            Customer existingCustomer = modelContainer.Customers.FirstOrDefault(user => user.username == username);
-            if (existingCustomer != null)
-            {
-                throw new FaultException("Username already in use.");
-            }
         }
     }
 }
