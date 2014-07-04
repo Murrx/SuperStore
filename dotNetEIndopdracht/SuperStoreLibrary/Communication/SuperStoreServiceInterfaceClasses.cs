@@ -14,12 +14,15 @@ namespace SuperStoreLibrary.Communication
         [DataMember]
         public string name { get; set; }
         [DataMember]
+        public double saldo { get; set; }
+        [DataMember]
         public AuthenticationCredentials credentials { get; set; }
 
         public CustomerContainer() { }
         public CustomerContainer(Customer customer)
         {
             name = customer.name;
+            saldo = customer.saldo;
             credentials = new AuthenticationCredentials { password = customer.password, username = customer.username };
         }
     }
@@ -39,43 +42,76 @@ namespace SuperStoreLibrary.Communication
     }
 
     [DataContract]
-    public class PurchaseContainer
+    public class PurchaseRequestContainer
+    {
+        [DataMember]
+        public int amount { get; set; }
+        [DataMember]
+        public ProductRequestContainer product { get; set; }
+
+        public PurchaseRequestContainer() { }
+        public PurchaseRequestContainer(Purchase purchase)
+        {
+            amount = purchase.amount;
+            product = new ProductRequestContainer(purchase.product);
+        }
+        public void Validate()
+        {
+            if (product == null) { throw new FaultException("product cannot be null"); }
+            else { product.Validate(); }
+            if (amount < 1) { throw new FaultException("Amount must be larger than 0"); }
+        }
+    }
+    [DataContract]
+    public class PurchaseResponseContainer
     {
         [DataMember]
         public int amount { get; set; }
         [DataMember]
         public DateTime date { get; set; }
         [DataMember]
-        public int productId { get; set; }
+        new public ProductResponseContainer product { get; set; }
 
-        public PurchaseContainer() { }
-        public PurchaseContainer(Purchase purchase)
+        public PurchaseResponseContainer() { }
+        public PurchaseResponseContainer(Purchase purchase)
         {
             amount = purchase.amount;
+            product = new ProductResponseContainer(purchase.product);
             date = purchase.date;
-            productId = purchase.product.id;
-        }
-        public void Validate()
-        {
-            if (productId < 1) { throw new FaultException("ProductId must be larger than 0"); }
-            if (amount < 1) { throw new FaultException("Amount must be larger than 0"); }
-            if (date < DateTime.Now.AddHours(-1)) { throw new FaultException("Date cannot be in the past"); }
         }
     }
+
     [DataContract]
-    public class ProductContainer
+    public class ProductResponseContainer : ProductRequestContainer
     {
         [DataMember]
         public string name { get; set; }
         [DataMember]
         public double price { get; set; }
-
-
-        public ProductContainer() { }
-        public ProductContainer(Product product)
+        [DataMember]
+        public int stock { get; set; }
+        public ProductResponseContainer() { }
+        public ProductResponseContainer(Product product) : base (product)
         {
             name = product.name;
             price = product.price;
+            stock = product.stock.amount;
+        }
+    }
+    [DataContract]
+    public class ProductRequestContainer
+    {
+        [DataMember]
+        public int id { get; set; }
+
+        public ProductRequestContainer() { }
+        public ProductRequestContainer(Product product) 
+        {
+            id = product.id;
+        }
+        public void Validate()
+        {
+            if (id < 1) { throw new FaultException("id must be bigger than 0"); }
         }
     }
     [DataContract]

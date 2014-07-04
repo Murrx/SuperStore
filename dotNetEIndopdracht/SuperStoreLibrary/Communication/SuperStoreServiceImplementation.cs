@@ -5,6 +5,7 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
 using SuperStoreLibrary.Model;
+using SuperStoreLibrary.Util;
 
 namespace SuperStoreLibrary.Communication
 {
@@ -17,12 +18,13 @@ namespace SuperStoreLibrary.Communication
             SuperStoreModelContainer modelContainer = ModelContainerProvider.GetInstance();
 
             //Create new customer and add it to the db
-            string password = GeneratePassword(userDetails.username);
-            Customer newCustomer = new Customer{name = userDetails.name, username = userDetails.username, password = HashPassword(password), saldo = 200};
+            string password = PasswordUtils.GeneratePassword(userDetails.username);
+            Customer newCustomer = new Customer{name = userDetails.name, username = userDetails.username, password = PasswordUtils.HashPassword(password), saldo = 200};
             modelContainer.Customers.Add(newCustomer);
             modelContainer.SaveChanges();
 
             return new AuthenticationCredentials { password = password, username = userDetails.username };
+
         }
         public CustomerContainer RetrieveUserInfo(AuthenticationCredentials credentials)
         {
@@ -31,7 +33,7 @@ namespace SuperStoreLibrary.Communication
             return new CustomerContainer(requestedCustomer);
         }
 
-        public List<ProductContainer> RetrieveAvailableProducts(Pagination pagination)
+        public List<ProductResponseContainer> RetrieveAvailableProducts(Pagination pagination)
         {
             pagination.Validate();
             SuperStoreModelContainer modelContainer = ModelContainerProvider.GetInstance();
@@ -43,15 +45,15 @@ namespace SuperStoreLibrary.Communication
                             Skip((pagination.pageIndex- 1) * pagination.pageSize).
                             Take(pagination.pageSize);
 
-            List<ProductContainer> result = new List<ProductContainer>();
+            List<ProductResponseContainer> result = new List<ProductResponseContainer>();
             foreach (Product product in products){
-                result.Add(new ProductContainer(product));
+                result.Add(new ProductResponseContainer(product));
             }
             if (result.Any()) { return result; }
             else throw new FaultException("No products found");
         }
 
-        public List<PurchaseContainer> RetrievePurchaseHistory(AuthenticationCredentials credentials, Pagination pagination)
+        public List<PurchaseResponseContainer> RetrievePurchaseHistory(AuthenticationCredentials credentials, Pagination pagination)
         {
             credentials.Validate();
             pagination.Validate();
@@ -64,47 +66,33 @@ namespace SuperStoreLibrary.Communication
                             Skip((pagination.pageIndex - 1) * pagination.pageSize).
                             Take(pagination.pageSize);
 
-            List<PurchaseContainer> result = new List<PurchaseContainer>();
+            List<PurchaseResponseContainer> result = new List<PurchaseResponseContainer>();
             foreach (Purchase purchase in purchases)
             {
-                result.Add(new PurchaseContainer(purchase));
+                result.Add(new PurchaseResponseContainer(purchase));
             }
             if (result.Any()) { return result; }
             else throw new FaultException("No purchases found");
         }
 
-        public PurchaseContainer PurchaseProduct(AuthenticationCredentials credentials, PurchaseContainer purchase)
+        public PurchaseResponseContainer PurchaseProduct(AuthenticationCredentials credentials, PurchaseRequestContainer purchase)
         {
             credentials.Validate();
             purchase.Validate();
 
             Customer customer = Customer.Retrieve(credentials);
-            Product product = Product.Retrieve(purchase.productId);
+            Product product = Product.Retrieve(purchase.product.id);
 
-            customer.BuyProduct(product, purchase.amount);
+            Purchase purchaseResult = customer.BuyProduct(product, purchase.amount);
 
-            return purchase;
+            return new PurchaseResponseContainer(purchaseResult);
         }
 
-        public static string GeneratePassword(string username)
-        {
-            string password = "";
-            foreach (char c in username)
-            {
-                password += (char)c+1;
-            }
-            return password;
-        }
-        public static string HashPassword(string password)
-        {
-            return string.Format("{0:X}", password.GetHashCode());
-        }
-
-        public void AddProduct(ProductContainer product, int amount)
+        public void AddProduct(ProductResponseContainer product)
         {
             SuperStoreModelContainer modelContainer = ModelContainerProvider.GetInstance();
 
-            Product newProduct = new Product { name = product.name, price = product.price, stock = new Stock { amount = amount } };
+            Product newProduct = new Product { name = product.name, price = product.price, stock = new Stock { amount = product.stock } };
             modelContainer.Products.Add(newProduct);
             modelContainer.SaveChanges();
         }

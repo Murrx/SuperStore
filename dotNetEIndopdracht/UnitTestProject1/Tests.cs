@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SuperStoreLibrary.Communication;
+using SuperStoreLibrary.Util;
 
 namespace UnitTestProject1
 {
@@ -11,7 +12,7 @@ namespace UnitTestProject1
         public void PasswordTest()
         {
             string Username = "Robin";
-            string Password = SuperStoreServiceImplementation.GeneratePassword(Username);
+            string Password = PasswordUtils.GeneratePassword(Username);
             Assert.IsTrue(Password == "Spcjo");
         }
     }

@@ -22,7 +22,7 @@ namespace SuperStoreLibrary.Model
 
         public bool IsInStock(int amount)
         {
-            return (stock.amount - amount > 0);
+            return (stock.amount - amount >= 0);
         }
     }
 }

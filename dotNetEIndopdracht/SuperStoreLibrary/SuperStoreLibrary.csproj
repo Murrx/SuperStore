@@ -87,6 +87,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Communication\SuperStoreServiceImplementation.cs" />
+    <Compile Include="Util\PasswordUtils.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

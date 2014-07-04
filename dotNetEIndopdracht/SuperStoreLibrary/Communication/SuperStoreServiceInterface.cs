@@ -21,17 +21,17 @@ namespace SuperStoreLibrary.Communication
         
         [OperationContract]
         [FaultContract(typeof(FaultException))]
-        List<ProductContainer> RetrieveAvailableProducts(Pagination pagination);
+        List<ProductResponseContainer> RetrieveAvailableProducts(Pagination pagination);
         
         [OperationContract]
         [FaultContract(typeof(FaultException))]
-        List<PurchaseContainer> RetrievePurchaseHistory(AuthenticationCredentials credentials, Pagination pagination);
+        List<PurchaseResponseContainer> RetrievePurchaseHistory(AuthenticationCredentials credentials, Pagination pagination);
         
         [OperationContract]
         [FaultContract(typeof(FaultException))]
-        PurchaseContainer PurchaseProduct(AuthenticationCredentials credentials, PurchaseContainer productToBuy);
+        PurchaseResponseContainer PurchaseProduct(AuthenticationCredentials credentials, PurchaseRequestContainer productToBuy);
 
         [OperationContract]
-        void AddProduct(ProductContainer product, int amount);
+        void AddProduct(ProductResponseContainer product);
     }
 }
