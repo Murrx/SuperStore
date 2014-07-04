@@ -57,7 +57,7 @@ namespace WpfApplication2
             {
                 availableProducts.ItemsSource = client.RetrieveAvailableProducts(new Pagination { pageIndex = 1, pageSize = 100 });
             }
-            catch (FaultException ex)
+            catch (FaultException)
             {
                 availableProducts.ItemsSource = null;
             }
@@ -66,6 +66,14 @@ namespace WpfApplication2
                 user = client.RetrieveUserInfo(new AuthenticationCredentials { username = user.credentials.username, password = user.credentials.password });
                 statusLabel.Text = "Connected as: " + user.credentials.username + ". Your current saldo = " + user.saldo;
                 statusLabel.Foreground = Brushes.Green;
+                try
+                {
+                    purchaseHistory.ItemsSource = client.RetrievePurchaseHistory(user.credentials, new Pagination { pageIndex = 1, pageSize = 100 });
+                }
+                catch (FaultException)
+                {
+                    purchaseHistory.ItemsSource = null;
+                }
             }
             else
             {

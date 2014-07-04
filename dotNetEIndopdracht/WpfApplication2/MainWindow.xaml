@@ -6,7 +6,8 @@
         Activated="Window_Activated">
 
     <Grid>
-        <DockPanel LastChildFill="True">
+        <DockPanel LastChildFill="False">
+            
             <Menu DockPanel.Dock="Top">
                 <MenuItem Header="_File">
                     <MenuItem Header="_Authenticate" Click="Authenticate_Click"/>
@@ -18,37 +19,65 @@
                     <MenuItem Header="_Refresh" Click="RefreshMenuItem_Click" />
                 </MenuItem>
             </Menu>
-            <ListView DockPanel.Dock="Top" Margin="10,10,10,10" Name="availableProducts" MouseLeftButtonUp="availableProducts_Selected" Height="210">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <WrapPanel>
-                            <TextBlock Text="Name: " />
-                            <TextBlock Text="{Binding name}" FontWeight="Bold" />
-                            <TextBlock Text=", " />
-                            <TextBlock Text="Price: " />
-                            <TextBlock Text="{Binding price}" FontWeight="Bold" />
-                            <TextBlock Text=", " />
-                            <TextBlock Text="Stock: " />
-                            <TextBlock Text="{Binding stock}" FontWeight="Bold"/>
-                        </WrapPanel>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+
+            <StatusBar DockPanel.Dock="Bottom" Height="25">
+                <StatusBarItem/>
+                <TextBlock x:Name="statusLabel" Text="" Foreground="Red"/>
+            </StatusBar>
             
-            <DockPanel DockPanel.Dock="Bottom" LastChildFill="False">
-                <DockPanel DockPanel.Dock="Top" Height="25" LastChildFill="false">
+            <DockPanel LastChildFill="True">
+                <DockPanel DockPanel.Dock="Top">
+                    <DockPanel DockPanel.Dock="Top">
+                        <Label Margin="10,0,10,0" Content="Available products:" Height="25" />
+                        <Label Margin="200,0,10,0" Content="Purchase History:" Height="25" />
+                    </DockPanel>
+                    <ListView  DockPanel.Dock="Left" Width="300" Margin="10,10,10,10" Name="availableProducts" MouseLeftButtonUp="availableProducts_Selected" Height="180">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <WrapPanel>
+                                <TextBlock Text="Name: " />
+                                <TextBlock Text="{Binding name}" FontWeight="Bold" />
+                                <TextBlock Text=", " />
+                                <TextBlock Text="Price: " />
+                                <TextBlock Text="{Binding price}" FontWeight="Bold" />
+                                <TextBlock Text=", " />
+                                <TextBlock Text="Stock: " />
+                                <TextBlock Text="{Binding stock}" FontWeight="Bold"/>
+                            </WrapPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+                <ListView  DockPanel.Dock="Right" Margin="10,10,10,10" Name="purchaseHistory" Height="180" Width="344">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <WrapPanel>
+                                <TextBlock Text="Name: " />
+                                <TextBlock Text="{Binding Path=product.name}" FontWeight="Bold" />
+                                <TextBlock Text=", " />
+                                <TextBlock Text="Price: " />
+                                <TextBlock Text="{Binding Path=product.price}" FontWeight="Bold" />
+                                <TextBlock Text=", " />
+                                <TextBlock Text="Amount: " />
+                                <TextBlock Text="{Binding amount}" FontWeight="Bold" />
+                                <TextBlock Text=", " />
+                                <TextBlock Text="Date: " />
+                                <TextBlock Text="{Binding date}" FontWeight="Bold"/>
+                            </WrapPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                </DockPanel>
+                <DockPanel DockPanel.Dock="Bottom" Height="25" LastChildFill="false">
                     <Label Margin="10,0,10,0" Content="Amount to buy:" Height="25" />
                     <ComboBox Height="25" Margin="10,0,10,0" Name="amountBox"/>
-                    <Button DockPanel.Dock="Right" Height="25" Margin="10,0,10,0" HorizontalAlignment="Right" Content="Buy Selected item" Width="109" Click="Button_Click"/>
+                    <Button  Height="25" Margin= "40,0,10,0" Content="Buy Selected item" Width="109" Click="Button_Click"/>
 
                 </DockPanel>
-                <StatusBar DockPanel.Dock="Bottom" Height="25">
-                    <StatusBarItem/>
-                    <TextBlock x:Name="statusLabel" Text="" Foreground="Red"/>
-                </StatusBar>
             </DockPanel>
-
             
+            
+                
        </DockPanel>
     </Grid>
 </Window>
