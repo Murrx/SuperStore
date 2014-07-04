@@ -18,7 +18,6 @@ namespace WpfApplication2
 {
     public partial class AuthenticationWindow : Window
     {
-        public static CustomerContainer customer;
         public AuthenticationWindow()
         {
             InitializeComponent();
@@ -26,22 +25,19 @@ namespace WpfApplication2
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            SuperStoreServiceInterfaceClient client = new SuperStoreServiceInterfaceClient();
             try
             {
-                //uftu
-                customer = client.RetrieveUserInfo(new AuthenticationCredentials { username = usernameBox.Text, password = passwordBox.Text});
-                statusLabel.Content = "Welcome " + customer.name;
+                SuperStoreServiceInterfaceClient client = ServiceClientProvider.GetInstance();
+                MainWindow.user = client.RetrieveUserInfo(new AuthenticationCredentials { username = usernameBox.Text, password = passwordBox.Text});
+                statusLabel.Content = "Welcome " + MainWindow.user.name;
                 statusLabel.Foreground = Brushes.Green;
             }
             catch(FaultException ex)
             {
-                customer = null;
+                MainWindow.user = null;
                 statusLabel.Content = ex.Message;
                 statusLabel.Foreground = Brushes.Red;
             }
-            
-            client.Close();
         }
     }
 }

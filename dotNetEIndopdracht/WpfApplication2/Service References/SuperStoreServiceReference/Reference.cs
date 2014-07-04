@@ -635,5 +635,10 @@ namespace WpfApplication2.SuperStoreServiceReference {
         public System.Threading.Tasks.Task AddProductAsync(WpfApplication2.SuperStoreServiceReference.ProductResponseContainer product) {
             return base.Channel.AddProductAsync(product);
         }
+
+        internal void PurchaseProduct(CustomerContainer customerContainer, PurchaseRequestContainer purchaseRequestContainer)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
