@@ -54,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Communication\SuperStoreServiceInterface.cs" />
+    <Compile Include="Communication\SuperStoreServiceInterfaceClasses.cs" />
     <Compile Include="Model\CustomerPart.cs" />
     <Compile Include="Model\ModelContainerProvider.cs" />
     <Compile Include="Model\Customer.cs">
