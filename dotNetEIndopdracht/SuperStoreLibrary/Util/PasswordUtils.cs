@@ -19,7 +19,8 @@ namespace SuperStoreLibrary.Util
         }
         public static string HashPassword(string password)
         {
-            return string.Format("{0:X}", password.GetHashCode());
+            return password;
+            //return string.Format("{0:X}", password.GetHashCode());
         }
     }
 }

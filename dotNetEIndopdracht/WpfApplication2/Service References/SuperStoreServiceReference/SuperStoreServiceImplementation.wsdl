@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="SuperStoreServiceImplementation" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:9639/SuperStoreService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:9639/SuperStoreService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/System.ServiceModel" />
+      <xsd:import schemaLocation="http://localhost:9639/SuperStoreService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:9639/SuperStoreService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/SuperStoreLibrary.Communication" />
+      <xsd:import schemaLocation="http://localhost:9639/SuperStoreService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/System" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="SuperStoreServiceInterface_RegisterNewUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:RegisterNewUser" />
+  </wsdl:message>
+  <wsdl:message name="SuperStoreServiceInterface_RegisterNewUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RegisterNewUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="SuperStoreServiceInterface_RegisterNewUser_FaultExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q1="http://schemas.datacontract.org/2004/07/System.ServiceModel" name="detail" element="q1:FaultException" />
+  </wsdl:message>
+  <wsdl:message name="SuperStoreServiceInterface_RetrieveUserInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:RetrieveUserInfo" />
+  </wsdl:message>
+  <wsdl:message name="SuperStoreServiceInterface_RetrieveUserInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RetrieveUserInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="SuperStoreServiceInterface_RetrieveUserInfo_FaultExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q2="http://schemas.datacontract.org/2004/07/System.ServiceModel" name="detail" element="q2:FaultException" />
+  </wsdl:message>
+  <wsdl:message name="SuperStoreServiceInterface_RetrieveAvailableProducts_InputMessage">
+    <wsdl:part name="parameters" element="tns:RetrieveAvailableProducts" />
+  </wsdl:message>
+  <wsdl:message name="SuperStoreServiceInterface_RetrieveAvailableProducts_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RetrieveAvailableProductsResponse" />
+  </wsdl:message>
+  <wsdl:message name="SuperStoreServiceInterface_RetrieveAvailableProducts_FaultExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q3="http://schemas.datacontract.org/2004/07/System.ServiceModel" name="detail" element="q3:FaultException" />
+  </wsdl:message>
+  <wsdl:message name="SuperStoreServiceInterface_RetrievePurchaseHistory_InputMessage">
+    <wsdl:part name="parameters" element="tns:RetrievePurchaseHistory" />
+  </wsdl:message>
+  <wsdl:message name="SuperStoreServiceInterface_RetrievePurchaseHistory_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RetrievePurchaseHistoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="SuperStoreServiceInterface_RetrievePurchaseHistory_FaultExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q4="http://schemas.datacontract.org/2004/07/System.ServiceModel" name="detail" element="q4:FaultException" />
+  </wsdl:message>
+  <wsdl:message name="SuperStoreServiceInterface_PurchaseProduct_InputMessage">
+    <wsdl:part name="parameters" element="tns:PurchaseProduct" />
+  </wsdl:message>
+  <wsdl:message name="SuperStoreServiceInterface_PurchaseProduct_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PurchaseProductResponse" />
+  </wsdl:message>
+  <wsdl:message name="SuperStoreServiceInterface_PurchaseProduct_FaultExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q5="http://schemas.datacontract.org/2004/07/System.ServiceModel" name="detail" element="q5:FaultException" />
+  </wsdl:message>
+  <wsdl:message name="SuperStoreServiceInterface_AddProduct_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddProduct" />
+  </wsdl:message>
+  <wsdl:message name="SuperStoreServiceInterface_AddProduct_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddProductResponse" />
+  </wsdl:message>
+  <wsdl:portType name="SuperStoreServiceInterface">
+    <wsdl:operation name="RegisterNewUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/SuperStoreServiceInterface/RegisterNewUser" message="tns:SuperStoreServiceInterface_RegisterNewUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/SuperStoreServiceInterface/RegisterNewUserResponse" message="tns:SuperStoreServiceInterface_RegisterNewUser_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/SuperStoreServiceInterface/RegisterNewUserFaultExceptionFault" name="FaultExceptionFault" message="tns:SuperStoreServiceInterface_RegisterNewUser_FaultExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RetrieveUserInfo">
+      <wsdl:input wsaw:Action="http://tempuri.org/SuperStoreServiceInterface/RetrieveUserInfo" message="tns:SuperStoreServiceInterface_RetrieveUserInfo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/SuperStoreServiceInterface/RetrieveUserInfoResponse" message="tns:SuperStoreServiceInterface_RetrieveUserInfo_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/SuperStoreServiceInterface/RetrieveUserInfoFaultExceptionFault" name="FaultExceptionFault" message="tns:SuperStoreServiceInterface_RetrieveUserInfo_FaultExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RetrieveAvailableProducts">
+      <wsdl:input wsaw:Action="http://tempuri.org/SuperStoreServiceInterface/RetrieveAvailableProducts" message="tns:SuperStoreServiceInterface_RetrieveAvailableProducts_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/SuperStoreServiceInterface/RetrieveAvailableProductsResponse" message="tns:SuperStoreServiceInterface_RetrieveAvailableProducts_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/SuperStoreServiceInterface/RetrieveAvailableProductsFaultExceptionFault" name="FaultExceptionFault" message="tns:SuperStoreServiceInterface_RetrieveAvailableProducts_FaultExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RetrievePurchaseHistory">
+      <wsdl:input wsaw:Action="http://tempuri.org/SuperStoreServiceInterface/RetrievePurchaseHistory" message="tns:SuperStoreServiceInterface_RetrievePurchaseHistory_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/SuperStoreServiceInterface/RetrievePurchaseHistoryResponse" message="tns:SuperStoreServiceInterface_RetrievePurchaseHistory_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/SuperStoreServiceInterface/RetrievePurchaseHistoryFaultExceptionFault" name="FaultExceptionFault" message="tns:SuperStoreServiceInterface_RetrievePurchaseHistory_FaultExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PurchaseProduct">
+      <wsdl:input wsaw:Action="http://tempuri.org/SuperStoreServiceInterface/PurchaseProduct" message="tns:SuperStoreServiceInterface_PurchaseProduct_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/SuperStoreServiceInterface/PurchaseProductResponse" message="tns:SuperStoreServiceInterface_PurchaseProduct_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/SuperStoreServiceInterface/PurchaseProductFaultExceptionFault" name="FaultExceptionFault" message="tns:SuperStoreServiceInterface_PurchaseProduct_FaultExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddProduct">
+      <wsdl:input wsaw:Action="http://tempuri.org/SuperStoreServiceInterface/AddProduct" message="tns:SuperStoreServiceInterface_AddProduct_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/SuperStoreServiceInterface/AddProductResponse" message="tns:SuperStoreServiceInterface_AddProduct_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_SuperStoreServiceInterface" type="tns:SuperStoreServiceInterface">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="RegisterNewUser">
+      <soap:operation soapAction="http://tempuri.org/SuperStoreServiceInterface/RegisterNewUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="FaultExceptionFault">
+        <soap:fault use="literal" name="FaultExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="RetrieveUserInfo">
+      <soap:operation soapAction="http://tempuri.org/SuperStoreServiceInterface/RetrieveUserInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="FaultExceptionFault">
+        <soap:fault use="literal" name="FaultExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="RetrieveAvailableProducts">
+      <soap:operation soapAction="http://tempuri.org/SuperStoreServiceInterface/RetrieveAvailableProducts" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="FaultExceptionFault">
+        <soap:fault use="literal" name="FaultExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="RetrievePurchaseHistory">
+      <soap:operation soapAction="http://tempuri.org/SuperStoreServiceInterface/RetrievePurchaseHistory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="FaultExceptionFault">
+        <soap:fault use="literal" name="FaultExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="PurchaseProduct">
+      <soap:operation soapAction="http://tempuri.org/SuperStoreServiceInterface/PurchaseProduct" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="FaultExceptionFault">
+        <soap:fault use="literal" name="FaultExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="AddProduct">
+      <soap:operation soapAction="http://tempuri.org/SuperStoreServiceInterface/AddProduct" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SuperStoreServiceImplementation">
+    <wsdl:port name="BasicHttpBinding_SuperStoreServiceInterface" binding="tns:BasicHttpBinding_SuperStoreServiceInterface">
+      <soap:address location="http://localhost:9639/SuperStoreService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

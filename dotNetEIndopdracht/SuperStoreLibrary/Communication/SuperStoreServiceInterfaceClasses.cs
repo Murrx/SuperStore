@@ -9,6 +9,18 @@ using SuperStoreLibrary.Model;
 namespace SuperStoreLibrary.Communication
 {
     [DataContract]
+    public class SuperStoreFault : FaultException
+    {
+        [DataMember]
+        String reason;
+        public SuperStoreFault(string reason)
+            : base(reason)
+        {
+            this.reason = reason;
+        }
+    }
+
+    [DataContract]
     public class CustomerContainer
     {
         [DataMember]

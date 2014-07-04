@@ -1,0 +1,24 @@
+﻿<Window x:Class="WpfApplication2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="SuperStore" Height="350" Width="525"
+        Activated="Window_Activated">
+
+    <Grid>
+        <DockPanel>
+            <Menu DockPanel.Dock="Top">
+                <MenuItem Header="_File">
+                    <MenuItem Header="_Authenticate" Click="Authenticate_Click"/>
+                    <MenuItem Header="_Close" Click="Close_Click"/>
+                </MenuItem>
+            </Menu>
+            <StatusBar DockPanel.Dock="Bottom">
+                <StatusBarItem/>
+                <TextBlock x:Name="statusLabel" Text="" Foreground="Red"/>
+            </StatusBar>
+
+            <StackPanel></StackPanel>
+        </DockPanel>
+
+    </Grid>
+</Window>

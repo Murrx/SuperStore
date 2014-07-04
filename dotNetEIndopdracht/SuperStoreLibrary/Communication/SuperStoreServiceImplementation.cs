@@ -32,7 +32,7 @@ namespace SuperStoreLibrary.Communication
             Customer requestedCustomer = Customer.Retrieve(credentials);
             return new CustomerContainer(requestedCustomer);
         }
-
+        [FaultContractAttribute(typeof(SuperStoreFault))]
         public List<ProductResponseContainer> RetrieveAvailableProducts(Pagination pagination)
         {
             pagination.Validate();
@@ -50,7 +50,7 @@ namespace SuperStoreLibrary.Communication
                 result.Add(new ProductResponseContainer(product));
             }
             if (result.Any()) { return result; }
-            else throw new FaultException("No products found");
+            else throw new SuperStoreFault("No products found");
         }
 
         public List<PurchaseResponseContainer> RetrievePurchaseHistory(AuthenticationCredentials credentials, Pagination pagination)

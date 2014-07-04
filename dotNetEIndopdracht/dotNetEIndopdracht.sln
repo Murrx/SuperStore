@@ -7,7 +7,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperStoreLibrary", "SuperS
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperStoreLibraryTests", "UnitTestProject1\SuperStoreLibraryTests.csproj", "{E62599A5-876A-442B-8EED-0246C0E68985}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApplication1", "WpfApplication1\WpfApplication1.csproj", "{B09B861E-1F60-4861-87BE-22E6C9ACAFAF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperStoreWPFClient", "WpfApplication2\SuperStoreWPFClient.csproj", "{A4F99E6B-7B39-4422-A05F-2BE77E90DBBB}"
+	ProjectSection(ProjectDependencies) = postProject
+		{1261CD88-37C3-4212-AEAD-54A82E70167E} = {1261CD88-37C3-4212-AEAD-54A82E70167E}
+		{983233B5-18C0-4888-952D-256E836DE8E0} = {983233B5-18C0-4888-952D-256E836DE8E0}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperStoreService", "WcfService1\SuperStoreService.csproj", "{1261CD88-37C3-4212-AEAD-54A82E70167E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +29,14 @@ Global
 		{E62599A5-876A-442B-8EED-0246C0E68985}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E62599A5-876A-442B-8EED-0246C0E68985}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E62599A5-876A-442B-8EED-0246C0E68985}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B09B861E-1F60-4861-87BE-22E6C9ACAFAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B09B861E-1F60-4861-87BE-22E6C9ACAFAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B09B861E-1F60-4861-87BE-22E6C9ACAFAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B09B861E-1F60-4861-87BE-22E6C9ACAFAF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A4F99E6B-7B39-4422-A05F-2BE77E90DBBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4F99E6B-7B39-4422-A05F-2BE77E90DBBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4F99E6B-7B39-4422-A05F-2BE77E90DBBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4F99E6B-7B39-4422-A05F-2BE77E90DBBB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1261CD88-37C3-4212-AEAD-54A82E70167E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1261CD88-37C3-4212-AEAD-54A82E70167E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1261CD88-37C3-4212-AEAD-54A82E70167E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1261CD88-37C3-4212-AEAD-54A82E70167E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

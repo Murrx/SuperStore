@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/SuperStoreLibrary.Communication" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/SuperStoreLibrary.Communication" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="RegistrationContainer">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RegistrationContainer" nillable="true" type="tns:RegistrationContainer" />
+  <xs:complexType name="AuthenticationCredentials">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AuthenticationCredentials" nillable="true" type="tns:AuthenticationCredentials" />
+  <xs:complexType name="CustomerContainer">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="credentials" nillable="true" type="tns:AuthenticationCredentials" />
+      <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="saldo" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CustomerContainer" nillable="true" type="tns:CustomerContainer" />
+  <xs:complexType name="Pagination">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="pageIndex" type="xs:int" />
+      <xs:element minOccurs="0" name="pageSize" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Pagination" nillable="true" type="tns:Pagination" />
+  <xs:complexType name="ArrayOfProductResponseContainer">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ProductResponseContainer" nillable="true" type="tns:ProductResponseContainer" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfProductResponseContainer" nillable="true" type="tns:ArrayOfProductResponseContainer" />
+  <xs:complexType name="ProductResponseContainer">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ProductRequestContainer">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="price" type="xs:double" />
+          <xs:element minOccurs="0" name="stock" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ProductResponseContainer" nillable="true" type="tns:ProductResponseContainer" />
+  <xs:complexType name="ProductRequestContainer">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="id" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ProductRequestContainer" nillable="true" type="tns:ProductRequestContainer" />
+  <xs:complexType name="ArrayOfPurchaseResponseContainer">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PurchaseResponseContainer" nillable="true" type="tns:PurchaseResponseContainer" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPurchaseResponseContainer" nillable="true" type="tns:ArrayOfPurchaseResponseContainer" />
+  <xs:complexType name="PurchaseResponseContainer">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="amount" type="xs:int" />
+      <xs:element minOccurs="0" name="date" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="product" nillable="true" type="tns:ProductResponseContainer" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PurchaseResponseContainer" nillable="true" type="tns:PurchaseResponseContainer" />
+  <xs:complexType name="PurchaseRequestContainer">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="amount" type="xs:int" />
+      <xs:element minOccurs="0" name="product" nillable="true" type="tns:ProductRequestContainer" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PurchaseRequestContainer" nillable="true" type="tns:PurchaseRequestContainer" />
+</xs:schema>

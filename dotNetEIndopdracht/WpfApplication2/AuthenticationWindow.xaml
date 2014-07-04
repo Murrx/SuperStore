@@ -1,0 +1,16 @@
+﻿<Window x:Class="WpfApplication2.AuthenticationWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="AuthenticationWindow" Height="300" Width="300">
+        
+    <Grid DataContext="StaticResource ClientViewModel">
+        <Label Content="Username" HorizontalAlignment="Left" Margin="24,89,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.302,-0.462"/>
+        <Label Content="Password" HorizontalAlignment="Left" Margin="24,130,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.302,-0.462"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="101,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Name="usernameBox"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="101,133,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Name="passwordBox"/>
+        <Button Content="Authenticate" HorizontalAlignment="Left" Margin="207,239,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+        <Label Content="Not Authenticated" Foreground="Red"  HorizontalAlignment="Left" Margin="10,233,0,0" VerticalAlignment="Top" Width="197" Name="statusLabel"/>
+
+
+    </Grid>
+</Window>

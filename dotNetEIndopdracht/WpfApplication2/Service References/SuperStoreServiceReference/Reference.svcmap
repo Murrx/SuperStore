@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="8f1e1648-fbf0-4e1c-8767-2fc895ca57b7" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:9639/SuperStoreService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="SuperStoreServiceImplementation.wsdl" MetadataType="Wsdl" ID="a308a8fc-3417-4473-a12a-01039eed4203" SourceId="1" SourceUrl="http://localhost:9639/SuperStoreService.svc?wsdl" />
+    <MetadataFile FileName="SuperStoreService.xsd" MetadataType="Schema" ID="55310ecc-028d-4c4c-a109-16050631851d" SourceId="1" SourceUrl="http://localhost:9639/SuperStoreService.svc?xsd=xsd0" />
+    <MetadataFile FileName="SuperStoreService1.xsd" MetadataType="Schema" ID="7de48946-e34a-4fdd-8a40-80fb35e05949" SourceId="1" SourceUrl="http://localhost:9639/SuperStoreService.svc?xsd=xsd2" />
+    <MetadataFile FileName="SuperStoreService2.xsd" MetadataType="Schema" ID="fc31efcc-4cdd-46d0-80b1-0c885ad3886c" SourceId="1" SourceUrl="http://localhost:9639/SuperStoreService.svc?xsd=xsd1" />
+    <MetadataFile FileName="SuperStoreService.disco" MetadataType="Disco" ID="63c00971-e30c-4d31-83b3-2e6463c92ece" SourceId="1" SourceUrl="http://localhost:9639/SuperStoreService.svc?disco" />
+    <MetadataFile FileName="SuperStoreService3.xsd" MetadataType="Schema" ID="461691ec-090a-48b2-beee-83b9d996533a" SourceId="1" SourceUrl="http://localhost:9639/SuperStoreService.svc?xsd=xsd3" />
+    <MetadataFile FileName="SuperStoreService4.xsd" MetadataType="Schema" ID="ae0ab3e2-a1d7-40ae-a022-3bd1d0cf7c18" SourceId="1" SourceUrl="http://localhost:9639/SuperStoreService.svc?xsd=xsd4" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
